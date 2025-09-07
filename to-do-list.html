@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List APP</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(230, 230, 230);
+        height: 100vh;
+    }
+
+
+    .container {
+        background-color: rgb(156, 222, 252);
+        border-radius: 15px;
+        height: auto;
+        width: 25vw;
+        box-shadow: 3px 4px 5px;
+    }
+
+    .heading  {
+        text-align: center;
+        font-size: 1.7em;
+        padding: 15px;
+        font-weight: 900;
+        border-bottom: 0.5px solid white;
+        margin-bottom: 20px;
+    }
+
+    .addTask {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    input {
+        padding: 7px;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: rgb(244, 232, 152);
+        color: black;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        border: 1px solid black;
+        box-shadow: 2px 2px 2px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 15px;
+
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 5px;
+        border: 1px solid white;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="heading">To-Do List</div>
+        <div class="addTask">
+            <input type="text" placeholder="Add a new Task" id="inputTask">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
+        <ul class="task-List" id="taskList">
+            <!-- <li></li> -->
+        </ul>
+    </div>
+
+    <script >
+
+        function addTask() {
+            const newTask = document.createElement("li")
+            const taskList = document.getElementById ("taskList")
+            taskList.appendChild(newTask)
+            newTask.textContent = document.getElementById("inputTask").value
+            document.getElementById("inputTask").value = ""
+            deleteTask(newTask)
+        }
+
+
+        function deleteTask(newTask){
+            const deletebtn = document.createElement("button")
+            deletebtn.textContent = "Delete"
+            newTask.appendChild(deletebtn)
+           deletebtn.onclick = function () {
+            newTask.remove ()
+           }
+        }
+
+
+    </script>
+</body>
+</html>
